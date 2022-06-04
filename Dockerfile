@@ -1,5 +1,4 @@
-FROM node:18-alpine AS builder
-WORKDIR /opt/app
+FROM node:18-alpine AS base
 RUN npm install \
 	npm@latest \
 	react-scripts@latest \
@@ -8,7 +7,9 @@ RUN npm install \
 	create-react-app@latest \
 	-g --silent
 
-FROM builder AS main
+FROM base AS main
+
+WORKDIR /opt/app
 ENV PATH /opt/app/node_modules/.bin:$PATH
 COPY ./app/package*.json ./
 RUN npm install --silent \
