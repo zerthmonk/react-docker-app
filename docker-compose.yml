@@ -1,0 +1,19 @@
+version: "3"
+
+services:
+  react-app:
+    build: .
+    volumes:
+      - ./app:/opt/app
+      - node_volume:/opt/app/node_modules
+    environment:
+      - CHOKIDAR_USEPOLLING=True
+      - HOST=0.0.0.0
+      - BROWSER=none
+    command: >
+      sh -c "npm run start"
+    ports:
+      - 3000:3000
+
+volumes:
+  node_volume: {}
