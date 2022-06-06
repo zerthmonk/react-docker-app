@@ -14,6 +14,8 @@ services:
       sh -c "npm run start"
     ports:
       - 3000:3000
+      - 443:443
+      - 80:80
 
 volumes:
   node_volume: {}

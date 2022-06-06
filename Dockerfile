@@ -5,6 +5,7 @@ RUN npm install \
 	react-dom@latest \
 	react@latest \
 	create-react-app@latest \
+	serve \
 	-g --silent
 
 FROM base AS main
@@ -15,4 +16,5 @@ COPY ./app/package*.json ./
 RUN npm install --silent \
 	&& chown -R node:node /opt/app/node_modules
 USER node
-EXPOSE 3000
+EXPOSE 3000 80 443
+
